@@ -1,6 +1,6 @@
 import requests
 import json
-import bisect
+import time
 # -------------------------
 # Jinja2
 # -------------------------
@@ -28,7 +28,7 @@ peopleList = peopleJSON['results']
 while peopleJSON['next']:
     people = requests.request("GET", peopleJSON['next'], headers=headers)
     peopleJSON = people.json()
-    peopleList.extend(peopleJSON["results"])    
+    peopleList.extend(peopleJSON["results"])
 
 # -------------------------
 # Single Person
@@ -118,50 +118,49 @@ for person in peopleList:
 # All Films
 # -------------------------
 
-film_template = env.get_template('film.j2')
-film = requests.request("GET", "https://swapi.dev/api/films/", headers=headers)
-filmsJSON = film.json()
-filmList = filmsJSON['results']
-filmList.extend(filmsJSON["results"])    
+# film_template = env.get_template('film.j2')
+# film = requests.request("GET", "https://swapi.dev/api/films/", headers=headers)
+# filmsJSON = film.json()
+# filmList = filmsJSON['results']
 
 # -------------------------
 # Single Film
 # -------------------------
 
-filmFilmList = []
-filmPersonList = []
-for film in filmList:
-    singleFilm = requests.request("GET", film['url'], headers=headers)
-    singleFilmJSON = singleFilm.json()
-    if singleFilmJSON not in filmFilmList:
-        filmFilmList.append(singleFilmJSON)
+# filmFilmList = []
+# filmPersonList = []
+# for film in filmList:
+#     singleFilm = requests.request("GET", film['url'], headers=headers)
+#     singleFilmJSON = singleFilm.json()
+#     if singleFilmJSON not in filmFilmList:
+#         filmFilmList.append(singleFilmJSON)
 
 # -------------------------
 # Characters
 # -------------------------
-    if film['characters']:
-        for person in film['characters']:
-            person = requests.request("GET", person, headers=headers)
-            personJSON = person.json()
-            if personJSON not in filmPersonList:
-                filmPersonList.append(personJSON)
+    # if film['characters']:
+    #     for person in film['characters']:
+    #         person = requests.request("GET", person, headers=headers)
+    #         personJSON = person.json()
+    #         if personJSON not in filmPersonList:
+    #             filmPersonList.append(personJSON)
 
 # -------------------------
 # Film Template
 # -------------------------
 
-    parsed_all_output = film_template.render(
-        singleFilm = singleFilmJSON,
-        filmPersonList = filmPersonList
-        )
+    # parsed_all_output = film_template.render(
+    #     singleFilm = singleFilmJSON,
+    #     filmPersonList = filmPersonList
+    #     )
 
 # -------------------------
 # Save Films File
 # -------------------------
 
-    with open(f"StarWars/Films/Episode_{ singleFilmJSON['episode_id'] }_{ singleFilmJSON['title'] }.md", "w") as fh:
-        fh.write(parsed_all_output)                
-        fh.close()
+    # with open(f"StarWars/Films/Episode_{ singleFilmJSON['episode_id'] }_{ singleFilmJSON['title'] }.md", "w") as fh:
+    #     fh.write(parsed_all_output)                
+    #     fh.close()
 
 # -------------------------
 # Star Wars Template
@@ -174,8 +173,8 @@ parsed_all_output = starWars_template.render(
     peopleSpeciesList = peopleSpeciesList,
     peopleVehicleList = peopleVehicleList,
     peopleStarshipList = peopleStarshipList,
-    filmFilmList = filmFilmList,
-    filmPersonList = filmPersonList
+    #filmFilmList = filmFilmList,
+    #filmPersonList = filmPersonList
     )
 
 # -------------------------
