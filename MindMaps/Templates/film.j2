@@ -1,0 +1,22 @@
+# Episode: {{ singleFilm.episode_id }}
+## {{ singleFilm.title }}
+### Opening Crawl: {{ singleFilm.opening_crawl | replace("\r\n","") }}
+### Director: {{ singleFilm.director }}
+### Producer: {{ singleFilm.producer }}
+### Release Date: {{ singleFilm.release_date }}
+### Created: {{ singleFilm.created }}
+### Edited: {{ singleFilm.edited }}
+### [Link]({{ singleFilm.url }})
+{%- for person in filmPersonList if singleFilm.url in person.characters %}
+##### {{ person.name }}
+###### Height: {{ person.height }}
+###### Mass: {{ person.mass }}
+###### Hair Color: {{ person.hair_color }}
+###### Skin Color: {{ person.skin_color }}
+###### Eye Color: {{ person.eye_color }}
+###### Birth Year: {{ person.birth_year }}
+###### Gender: {{ person.gender }}
+###### Created: {{ person.created }}
+###### Edited: {{ person.edited }}
+###### [Link]({{ person.url }})
+{%- endfor %}

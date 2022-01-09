@@ -1,0 +1,88 @@
+# {{ singlePerson.name }}
+## Height: {{ singlePerson.height }}
+## Mass: {{ singlePerson.mass }}
+## Hair Color: {{ singlePerson.hair_color }}
+## Skin Color: {{ singlePerson.skin_color }}
+## Eye Color: {{ singlePerson.eye_color }}
+## Birth Year: {{ singlePerson.birth_year }}
+## Gender: {{ singlePerson.gender }}
+## Created: {{ singlePerson.created }}
+## Edited: {{ singlePerson.edited }}
+## [Link]({{ singlePerson.url }})
+## Homeworld
+### {{ homeworld.name }}
+#### Population: {{ homeworld.population }}
+#### Rotation Period: {{ homeworld.rotation_period }}
+#### Orbital Period: {{ homeworld.orbital_period }}
+#### Diameter: {{ homeworld.diameter }}
+#### Climate: {{ homeworld.climate }}
+#### Gravity: {{ homeworld.gravity }}
+#### Terrain: {{ homeworld.terrain }}
+#### Surface Water: {{ homeworld.surface_water }}
+#### Created: {{ homeworld.created }}
+#### Edited: {{ homeworld.edited }}
+#### [Link]({{ homeworld.url }})
+## Films
+{%- for film in film if singlePerson.url in film.characters %}
+### Episode: {{ film.episode_id }}
+#### {{ film.title }}
+#### Opening Crawl: {{ film.opening_crawl | replace("\r\n","") }}
+#### Director: {{ film.director }}
+#### Producer: {{ film.producer }}
+#### Release Date: {{ film.release_date }}
+#### Created: {{ film.created }}
+#### Edited: {{ film.edited }}
+#### [Link]({{ film.url }})
+{%- endfor %}
+## Species
+{%- for species in species if singlePerson.url in species.people %}
+### {{ species.name }}
+#### Classification: {{ species.classification }}
+#### Designation: {{ species.designation }}
+#### Average Height: {{ species.average_height }}
+#### Average Lifespan: {{ species.average_lifespan }}
+#### Skin Colours: {{ species.skin_colors }}
+#### Hair Colours: {{ species.hair_colors }}
+#### Eye Colours: {{ species.eye_colors }}
+#### [Homeworld]({{ species.homeworld }})
+#### Language: {{ species.language }}
+### Created: {{ species.created }}
+### Edited: {{ species.edited }}
+### [Link]({{ species.url }})
+{%- endfor %}
+## Vehicles
+{%-    for vehicle in vehicle if singlePerson.url in vehicle.pilots %}
+### {{ vehicle.name }}
+#### Model: {{ vehicle.model }}
+#### Manufacturer: {{ vehicle.manufacturer }}
+#### Class: {{ vehicle.vehicle_class }}
+#### Cost In Credits: {{ vehicle.cost_in_credits }}
+#### Length: {{ vehicle.length }}
+#### Max Atmosphering Speed: {{ vehicle.max_atmosphering_speed }}
+#### Crew: {{ vehicle.crew }}
+#### Passengers: {{ vehicle.passengers }}
+#### Cargo Capacity: {{ vehicle.cargo_capacity }}
+#### Consumables: {{ vehicle.consumables }}
+#### Created: {{ vehicle.created }}
+#### Edited: {{ vehicle.edited }}
+#### [Link]({{ vehicle.url }})
+{%-     endfor %}
+## Starships
+{%-    for starship in starship if singlePerson.url in starship.pilots %}
+### {{ starship.name }}
+#### Model: {{ starship.model }}
+#### Manufacturer: {{ starship.starship_class }}
+#### Class: {{ starship.manufacturer }}
+#### Cost In Credits: {{ starship.cost_in_credits }}
+#### Length: {{ starship.length }}
+#### Max Atmosphering Speed: {{ starship.max_atmosphering_speed }}
+#### Crew: {{ starship.crew }}
+#### Passengers: {{ starship.passengers }}
+#### Cargo Capacity: {{ starship.cargo_capacity }}
+#### Consumables: {{ starship.consumables }}
+#### Hyperdrive Rating: {{ starship.hyperdrive_rating }}
+#### MGLT: {{ starship.MGLT }}
+#### Created: {{ starship.created }}
+#### Edited: {{ starship.edited }}
+#### [Link]({{ starship.url }})
+{%-     endfor %}
