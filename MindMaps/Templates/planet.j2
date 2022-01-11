@@ -1,0 +1,38 @@
+## {{ singlePlanet.name }}
+### Population: {{ singlePlanet.population }}
+### Rotation Period: {{ singlePlanet.rotation_period }}
+### Orbital Period: {{ singlePlanet.orbital_period }}
+### Diameter: {{ singlePlanet.diameter }}
+### Climate: {{ singlePlanet.climate }}
+### Gravity: {{ singlePlanet.gravity }}
+### Terrain: {{ singlePlanet.terrain }}
+### Surface Water: {{ singlePlanet.surface_water }}
+### Created: {{ singlePlanet.created }}
+### Edited: {{ singlePlanet.edited }}
+### [Link]({{ singlePlanet.url }})
+### Residents
+{%- for person in planetPersonList if singlePlanet.url in person.homeworld %}
+#### {{ person.name }}
+##### Height: {{ person.height }}
+##### Mass: {{ person.mass }}
+##### Hair Color: {{ person.hair_color }}
+##### Skin Color: {{ person.skin_color }}
+##### Eye Color: {{ person.eye_color }}
+##### Birth Year: {{ person.birth_year }}
+##### Gender: {{ person.gender }}
+##### Created: {{ person.created }}
+##### Edited: {{ person.edited }}
+##### [Link]({{ person.url }})
+{%- endfor %}
+### Films
+{%-     for film in planetFilmList if singlePlanet.url in film.planets %}
+#### Episode: {{ film.episode_id }}
+##### {{ film.title }}
+##### Opening Crawl: {{ film.opening_crawl | replace("\r\n","") }}
+##### Director: {{ film.director }}
+##### Producer: {{ film.producer }}
+##### Release Date: {{ film.release_date }}
+##### Created: {{ film.created }}
+##### Edited: {{ film.edited }}
+##### [Link]({{ film.url }})
+{%-     endfor %}

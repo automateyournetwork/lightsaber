@@ -104,7 +104,7 @@
 ##### Edited: {{ film.edited }}
 ##### [Link]({{ film.url }})
 #### Characters
-{%-     for person in filmPersonList if film.url in person.characters %}
+{%-     for person in filmPersonList if film.url in person.films %}
 ##### {{ person.name }}
 ###### Height: {{ person.height }}
 ###### Mass: {{ person.mass }}
@@ -116,5 +116,229 @@
 ###### Created: {{ person.created }}
 ###### Edited: {{ person.edited }}
 ###### [Link]({{ person.url }})
+{%-     endfor %}
+#### Planets
+{%-     for planet in filmPlanetList if film.url in planet.films %}
+##### {{ planet.name }}
+###### Population: {{ planet.population }}
+###### Rotation Period: {{ planet.rotation_period }}
+###### Orbital Period: {{ planet.orbital_period }}
+###### Diameter: {{ planet.diameter }}
+###### Climate: {{ planet.climate }}
+###### Gravity: {{ planet.gravity }}
+###### Terrain: {{ planet.terrain }}
+###### Surface Water: {{ planet.surface_water }}
+###### Created: {{ planet.created }}
+###### Edited: {{ planet.edited }}
+###### [Link]({{ planet.url }})
+{%-     endfor %}
+#### Starships
+{%-    for starship in filmStarshipList if film.url in starship.films %}
+##### {{ starship.name }}
+###### Model: {{ starship.model }}
+###### Manufacturer: {{ starship.starship_class }}
+###### Class: {{ starship.manufacturer }}
+###### Cost In Credits: {{ starship.cost_in_credits }}
+###### Length: {{ starship.length }}
+###### Max Atmosphering Speed: {{ starship.max_atmosphering_speed }}
+###### Crew: {{ starship.crew }}
+###### Passengers: {{ starship.passengers }}
+###### Cargo Capacity: {{ starship.cargo_capacity }}
+###### Consumables: {{ starship.consumables }}
+###### Hyperdrive Rating: {{ starship.hyperdrive_rating }}
+###### MGLT: {{ starship.MGLT }}
+###### Created: {{ starship.created }}
+###### Edited: {{ starship.edited }}
+###### [Link]({{ starship.url }})
+{%-     endfor %}
+#### Vehicles
+{%-    for vehicle in filmVehicleList if film.url in vehicle.films %}
+##### {{ vehicle.name }}
+###### Model: {{ vehicle.model }}
+###### Manufacturer: {{ vehicle.manufacturer }}
+###### Class: {{ vehicle.vehicle_class }}
+###### Cost In Credits: {{ vehicle.cost_in_credits }}
+###### Length: {{ vehicle.length }}
+###### Max Atmosphering Speed: {{ vehicle.max_atmosphering_speed }}
+###### Crew: {{ vehicle.crew }}
+###### Passengers: {{ vehicle.passengers }}
+###### Cargo Capacity: {{ vehicle.cargo_capacity }}
+###### Consumables: {{ vehicle.consumables }}
+###### Created: {{ vehicle.created }}
+###### Edited: {{ vehicle.edited }}
+###### [Link]({{ vehicle.url }})
+{%-     endfor %}
+#### Species
+{%-     for species in filmSpeciesList if film.url in species.films %}
+##### {{ species.name }}
+###### Classification: {{ species.classification }}
+###### Designation: {{ species.designation }}
+###### Average Height: {{ species.average_height }}
+###### Average Lifespan: {{ species.average_lifespan }}
+###### Skin Colours: {{ species.skin_colors }}
+###### Hair Colours: {{ species.hair_colors }}
+###### Eye Colours: {{ species.eye_colors }}
+###### [Homeworld]({{ species.homeworld }})
+###### Language: {{ species.language }}
+###### Created: {{ species.created }}
+###### Edited: {{ species.edited }}
+###### [Link]({{ species.url }})
+{%-     endfor %}
+{%- endfor %}
+## Planets
+{%- for planet in planetPlanetList %}
+### {{ planet.name }}
+#### Population: {{ planet.population }}
+#### Rotation Period: {{ planet.rotation_period }}
+#### Orbital Period: {{ planet.orbital_period }}
+#### Diameter: {{ planet.diameter }}
+#### Climate: {{ planet.climate }}
+#### Gravity: {{ planet.gravity }}
+#### Terrain: {{ planet.terrain }}
+#### Surface Water: {{ planet.surface_water }}
+#### Created: {{ planet.created }}
+#### Edited: {{ planet.edited }}
+#### [Link]({{ planet.url }})
+#### Residents
+{%-     for person in planetPersonList if planet.url in person.homeworld %}
+##### {{ person.name }}
+###### Height: {{ person.height }}
+###### Mass: {{ person.mass }}
+###### Hair Color: {{ person.hair_color }}
+###### Skin Color: {{ person.skin_color }}
+###### Eye Color: {{ person.eye_color }}
+###### Birth Year: {{ person.birth_year }}
+###### Gender: {{ person.gender }}
+###### Created: {{ person.created }}
+###### Edited: {{ person.edited }}
+###### [Link]({{ person.url }})
+{%-     endfor %}
+#### Films
+{%-     for film in planetFilmList if planet.url in film.planets %}
+##### Episode: {{ film.episode_id }}
+###### {{ film.title }}
+###### Opening Crawl: {{ film.opening_crawl | replace("\r\n","") }}
+###### Director: {{ film.director }}
+###### Producer: {{ film.producer }}
+###### Release Date: {{ film.release_date }}
+###### Created: {{ film.created }}
+###### Edited: {{ film.edited }}
+###### [Link]({{ film.url }})
+{%-     endfor %}
+{%- endfor %}
+## Species
+{%- for species in speciesSpeciesList %}
+### {{ species.name }}
+#### Classification: {{ species.classification }}
+#### Designation: {{ species.designation }}
+#### Average Height: {{ species.average_height }}
+#### Average Lifespan: {{ species.average_lifespan }}
+#### Skin Colours: {{ species.skin_colors }}
+#### Hair Colours: {{ species.hair_colors }}
+#### Eye Colours: {{ species.eye_colors }}
+#### [Homeworld]({{ species.homeworld }})
+#### Language: {{ species.language }}
+#### Created: {{ species.created }}
+#### Edited: {{ species.edited }}
+#### [Link]({{ species.url }})
+#### Characters
+{%-     for person in speciesPersonList if species.url in person.species %}
+##### {{ person.name }}
+###### Height: {{ person.height }}
+###### Mass: {{ person.mass }}
+###### Hair Color: {{ person.hair_color }}
+###### Skin Color: {{ person.skin_color }}
+###### Eye Color: {{ person.eye_color }}
+###### Birth Year: {{ person.birth_year }}
+###### Gender: {{ person.gender }}
+###### Created: {{ person.created }}
+###### Edited: {{ person.edited }}
+###### [Link]({{ person.url }})
+{%-     endfor %}
+#### Films
+{%-     for film in speciesFilmList if species.url in film.species %}
+##### Episode: {{ film.episode_id }}
+###### {{ film.title }}
+###### Opening Crawl: {{ film.opening_crawl | replace("\r\n","") }}
+###### Director: {{ film.director }}
+###### Producer: {{ film.producer }}
+###### Release Date: {{ film.release_date }}
+###### Created: {{ film.created }}
+###### Edited: {{ film.edited }}
+###### [Link]({{ film.url }})
+{%-     endfor %}
+{%- endfor %}
+## Starships
+{%- for starship in starshipStarshipList %}
+### {{ starship.name }}
+#### Model: {{ starship.model }}
+#### Manufacturer: {{ starship.starship_class }}
+#### Class: {{ starship.manufacturer }}
+#### Cost In Credits: {{ starship.cost_in_credits }}
+#### Length: {{ starship.length }}
+#### Max Atmosphering Speed: {{ starship.max_atmosphering_speed }}
+#### Crew: {{ starship.crew }}
+#### Passengers: {{ starship.passengers }}
+#### Cargo Capacity: {{ starship.cargo_capacity }}
+#### Consumables: {{ starship.consumables }}
+#### Hyperdrive Rating: {{ starship.hyperdrive_rating }}
+#### MGLT: {{ starship.MGLT }}
+#### Created: {{ starship.created }}
+#### Edited: {{ starship.edited }}
+#### [Link]({{ starship.url }})
+#### Films
+{%-     for film in starshipFilmList if starship.url in film.starships %}
+##### Episode: {{ film.episode_id }}
+###### {{ film.title }}
+###### Opening Crawl: {{ film.opening_crawl | replace("\r\n","") }}
+###### Director: {{ film.director }}
+###### Producer: {{ film.producer }}
+###### Release Date: {{ film.release_date }}
+###### Created: {{ film.created }}
+###### Edited: {{ film.edited }}
+###### [Link]({{ film.url }})
+{%-     endfor %}
+{%- endfor %}
+## Vehicles
+{%- for vehicle in vehiclesVehiclesList %}
+### {{ vehicle.name }}
+#### Model: {{ vehicle.model }}
+#### Manufacturer: {{ vehicle.manufacturer }}
+#### Class: {{ vehicle.vehicle_class }}
+#### Cost In Credits: {{ vehicle.cost_in_credits }}
+#### Length: {{ vehicle.length }}
+#### Max Atmosphering Speed: {{ vehicle.max_atmosphering_speed }}
+#### Crew: {{ vehicle.crew }}
+#### Passengers: {{ vehicle.passengers }}
+#### Cargo Capacity: {{ vehicle.cargo_capacity }}
+#### Consumables: {{ vehicle.consumables }}
+#### Created: {{ vehicle.created }}
+#### Edited: {{ vehicle.edited }}
+#### [Link]({{ vehicle.url }})
+#### Pilots
+{%-     for person in vehiclesPersonList if vehicle.url in person.vehicles %}
+##### {{ person.name }}
+###### Height: {{ person.height }}
+###### Mass: {{ person.mass }}
+###### Hair Color: {{ person.hair_color }}
+###### Skin Color: {{ person.skin_color }}
+###### Eye Color: {{ person.eye_color }}
+###### Birth Year: {{ person.birth_year }}
+###### Gender: {{ person.gender }}
+###### Created: {{ person.created }}
+###### Edited: {{ person.edited }}
+###### [Link]({{ person.url }})
+{%-     endfor %}
+#### Films
+{%-     for film in vehiclesFilmList if vehicle.url in film.vehicles %}
+##### Episode: {{ film.episode_id }}
+###### {{ film.title }}
+###### Opening Crawl: {{ film.opening_crawl | replace("\r\n","") }}
+###### Director: {{ film.director }}
+###### Producer: {{ film.producer }}
+###### Release Date: {{ film.release_date }}
+###### Created: {{ film.created }}
+###### Edited: {{ film.edited }}
+###### [Link]({{ film.url }})
 {%-     endfor %}
 {%- endfor %}

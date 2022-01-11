@@ -1,0 +1,40 @@
+# {{ singleVehicles.name }}
+## Model: {{ singleVehicles.model }}
+## Manufacturer: {{ singleVehicles.manufacturer }}
+## Class: {{ singleVehicles.singleVehicles_class }}
+## Cost In Credits: {{ singleVehicles.cost_in_credits }}
+## Length: {{ singleVehicles.length }}
+## Max Atmosphering Speed: {{ singleVehicles.max_atmosphering_speed }}
+## Crew: {{ singleVehicles.crew }}
+## Passengers: {{ singleVehicles.passengers }}
+## Cargo Capacity: {{ singleVehicles.cargo_capacity }}
+## Consumables: {{ singleVehicles.consumables }}
+## Created: {{ singleVehicles.created }}
+## Edited: {{ singleVehicles.edited }}
+## [Link]({{ singleVehicles.url }})
+## Pilots
+{%- for person in vehiclesPersonList if singleVehicles.url in person.vehicles %}
+### {{ person.name }}
+#### Height: {{ person.height }}
+#### Mass: {{ person.mass }}
+#### Hair Color: {{ person.hair_color }}
+#### Skin Color: {{ person.skin_color }}
+#### Eye Color: {{ person.eye_color }}
+#### Birth Year: {{ person.birth_year }}
+#### Gender: {{ person.gender }}
+#### Created: {{ person.created }}
+#### Edited: {{ person.edited }}
+#### [Link]({{ person.url }})
+{%- endfor %}
+## Films
+{%- for film in vehiclesFilmList if singleVehicles.url in film.vehicles %}
+### Episode: {{ film.episode_id }}
+#### {{ film.title }}
+#### Opening Crawl: {{ film.opening_crawl | replace("\r\n","") }}
+#### Director: {{ film.director }}
+#### Producer: {{ film.producer }}
+#### Release Date: {{ film.release_date }}
+#### Created: {{ film.created }}
+#### Edited: {{ film.edited }}
+#### [Link]({{ film.url }})
+{%- endfor %}

@@ -1,0 +1,39 @@
+# {{ singleSpecies.name }}
+## Classification: {{ singleSpecies.classification }}
+## Designation: {{ singleSpecies.designation }}
+## Average Height: {{ singleSpecies.average_height }}
+## Average Lifespan: {{ singleSpecies.average_lifespan }}
+## Skin Colours: {{ singleSpecies.skin_colors }}
+## Hair Colours: {{ singleSpecies.hair_colors }}
+## Eye Colours: {{ singleSpecies.eye_colors }}
+## [Homeworld]({{ singleSpecies.homeworld }})
+## Language: {{ singleSpecies.language }}
+## Created: {{ singleSpecies.created }}
+## Edited: {{ singleSpecies.edited }}
+## [Link]({{ singleSpecies.url }})
+## Characters
+{%- for person in speciesPersonList if singleSpecies.url in person.species %}
+### {{ person.name }}
+#### Height: {{ person.height }}
+#### Mass: {{ person.mass }}
+#### Hair Color: {{ person.hair_color }}
+#### Skin Color: {{ person.skin_color }}
+#### Eye Color: {{ person.eye_color }}
+#### Birth Year: {{ person.birth_year }}
+#### Gender: {{ person.gender }}
+#### Created: {{ person.created }}
+#### Edited: {{ person.edited }}
+#### [Link]({{ person.url }})
+{%- endfor %}
+## Films
+{%- for film in speciesFilmList if singleSpecies.url in film.species %}
+### Episode: {{ film.episode_id }}
+#### {{ film.title }}
+#### Opening Crawl: {{ film.opening_crawl | replace("\r\n","") }}
+#### Director: {{ film.director }}
+#### Producer: {{ film.producer }}
+#### Release Date: {{ film.release_date }}
+#### Created: {{ film.created }}
+#### Edited: {{ film.edited }}
+#### [Link]({{ film.url }})
+{%-     endfor %}

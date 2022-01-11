@@ -1,0 +1,28 @@
+# {{ singleStarship.name }}
+## Model: {{ singleStarship.model }}
+## Manufacturer: {{ singleStarship.singleStarship_class }}
+## Class: {{ singleStarship.manufacturer }}
+## Cost In Credits: {{ singleStarship.cost_in_credits }}
+## Length: {{ singleStarship.length }}
+## Max Atmosphering Speed: {{ singleStarship.max_atmosphering_speed }}
+## Crew: {{ singleStarship.crew }}
+## Passengers: {{ singleStarship.passengers }}
+## Cargo Capacity: {{ singleStarship.cargo_capacity }}
+## Consumables: {{ singleStarship.consumables }}
+## Hyperdrive Rating: {{ singleStarship.hyperdrive_rating }}
+## MGLT: {{ singleStarship.MGLT }}
+## Created: {{ singleStarship.created }}
+## Edited: {{ singleStarship.edited }}
+## [Link]({{ singleStarship.url }})
+## Films
+{%- for film in starshipFilmList if singleStarship.url in film.starships %}
+### Episode: {{ film.episode_id }}
+#### {{ film.title }}
+#### Opening Crawl: {{ film.opening_crawl | replace("\r\n","") }}
+#### Director: {{ film.director }}
+#### Producer: {{ film.producer }}
+#### Release Date: {{ film.release_date }}
+#### Created: {{ film.created }}
+#### Edited: {{ film.edited }}
+#### [Link]({{ film.url }})
+{%- endfor %}
